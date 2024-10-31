@@ -2,10 +2,10 @@
 import { useState } from 'react';
 
 export default function Home() {
-    const [rpcUrl, setRpcUrl] = useState('');
+    const [rpcUrl, setRpcUrl] = useState('https://mainnet.base.org'); // Default RPC URL for Base network
     const [privateKey, setPrivateKey] = useState('');
     const [sharesSubject, setSharesSubject] = useState('');
-    const [amount, setAmount] = useState('');
+    const [amount, setAmount] = useState(1); // Default amount set to 1
     const [message, setMessage] = useState('');
     const [txHash, setTxHash] = useState(null);
 
@@ -68,7 +68,8 @@ export default function Home() {
                     <div>
                         <label className="block text-gray-700">Amount:</label>
                         <input
-                            type="text"
+                            type="number"
+                            min="1"
                             value={amount}
                             onChange={(e) => setAmount(e.target.value)}
                             required
@@ -89,7 +90,7 @@ export default function Home() {
                     <p className="mt-2 text-center text-blue-600">
                         Transaction Hash:{" "}
                         <a
-                            href={`https://etherscan.io/tx/${txHash}`}
+                            href={`https://basescan.org/tx/${txHash}`}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="underline"
